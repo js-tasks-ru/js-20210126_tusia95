@@ -6,19 +6,16 @@
  */
 export function sortStrings(arr, param = 'asc') {
   switch (param) {
-    case `asc`:
-      return arr.sort(function (a, b) {
-        return a.localeCompare(b);
-      });
-      break;
-    case `dsc`:
-      return arr.sort(function (a, b) {
-        return b.localeCompare(a);
-      });
-      break;
+  case 'asc':
+    return makeSorting(arr, 1);
+  case 'desc':
+    return makeSorting(arr, -1);
+  default:
+    return makeSorting(arr, 1);
+  }
+
+  function makeSorting(array, direction) {
+    return [...array].sort((a, b) =>
+      direction * a.localeCompare(b, ["ru", "en"], {caseFirst: 'upper'}));
   }
 }
-
-
-
-

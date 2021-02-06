@@ -7,4 +7,3 @@
 export function trimSymbols(string, size) {
 
 }
-}
